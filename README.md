@@ -14,6 +14,6 @@ make
 The example shows that calling `cudaMemcpy()` or `cudaMemcpyAsync()` for copying to or from a buffer allocated by `cudaMallocAsync()` fails if the current device is not the one that holds the memory.
 Memory allocated by `cudaMalloc()` does not have this restriction.
 
-For copies to/from the host this is merely an annoyance: one needs to remember to set the correct device, which is an extra step but it's easy to do.
+For copies to/from the host, the solution is to set the correct device.
 
-For copies between different devices this is impossible: one cannot set both devices as current.
+For copies between different devices, the solution is to use `cudaMemcpyPeer()` or `cudaMemcpyPeerAsync()`.
